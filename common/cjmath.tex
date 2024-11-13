@@ -1,0 +1,86 @@
+% SPDX-FileCopyrightText: Copyright (C) Nile Jocson <novoseiversia@gmail.com>
+% SPDX-License-Identifier: MPL-2.0
+
+\usepackage{adjustbox}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{pgfplots}
+\usepackage{physics}
+\usepackage{tabularray}
+\usepackage{tkz-tab}
+\usepackage{xpatch}
+
+
+
+\renewcommand{\arraystretch}{1.75}
+\renewcommand{\thesubsubsection}{\thesubsection.\alph{subsubsection}}
+
+
+
+\DefTblrTemplate{caption}{default}{}
+\DefTblrTemplate{capcont}{default}{}
+
+\xpatchcmd{\tkzTabLine}{$0$}{$\bullet$}{}{}
+\tikzset{t style/.style={style=solid}}
+
+
+
+\newcommand*{\cjboilerplate}[2]{
+	\author{Nile Jocson \textless{}novoseiversia@gmail.com\textgreater{}}
+	\title{Exercise Solutions for #1\\{\large #2}}
+	\date{\today}
+
+	\maketitle{}
+	\null\vfill\noindent
+	Copyright \copyright{} Nile Jocson \textless{}novoseiversia@gmail.com\textgreater{} \\
+	Licensed under MPL-2.0. See LICENSE file.
+		\pagebreak
+
+	\tableofcontents{}
+		\pagebreak
+}
+
+
+
+\newenvironment{cjsection}[1]
+{
+	\section{#1}
+}
+{
+	\pagebreak
+}
+
+\newcommand*{\cjitem}[1]{\subsection{#1}}
+\newcommand*{\cjsubitem}[1]{\subsubsection{#1}}
+
+
+
+\newcommand*{\cjwhy}[2]{\hline \(\Rightarrow\) #1 & #2 \\}
+\newcommand*{\cjsubwhy}[2]{\(\Rightarrow\) #1 & #2 \\}
+\newcommand*{\cjcontinue}[1]{\(\Rightarrow\) #1 & \\}
+\newcommand*{\cjfa}[1]{\hline \(\Rightarrow\) #1 & Final answer. \\}
+\newcommand*{\cjfastep}[2]{\hline \(\Rightarrow\) #1 & Final answer. #2 \\}
+\newcommand{\cjsign}[1]{\hline & Create a table of signs. \\ \begin{adjustbox}{width=0.49\textwidth}\begin{tikzpicture}#1\end{tikzpicture}\end{adjustbox} \\ \\}
+\newcommand{\cjgraph}[1]{\hline & Graph the equation. \\ \begin{adjustbox}{width=0.49\textwidth}\begin{tikzpicture}\begin{axis}[axis lines=middle, axis equal, grid=both]#1\end{axis}\end{tikzpicture}\end{adjustbox} \\ \\}
+
+\newcommand*{\cjqed}{\(\blacksquare\)}
+
+\NewDocumentEnvironment{cjsolution}{+b}
+{
+	\begin{longtblr}
+	[
+		expand = \cjwhy\cjsubwhy\cjcontinue\cjfa\cjfastep\cjsign\cjgraph
+	]
+	{
+		colspec = {|lX[r]|},
+		width = \textwidth
+	}
+		#1
+		& \cjqed{} \\
+		\hline
+	\end{longtblr}
+}{}
+
+\newcommand*{\cjdiv}{\divisionsymbol{}}
