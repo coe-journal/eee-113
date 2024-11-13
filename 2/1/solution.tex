@@ -15,7 +15,12 @@
 		4.7 seconds, what is \(F_s\) in Hz (samples/second)? Please provide your answer in at least
 		5 significant figures.}
 			\begin{cjsolution}
-				\cjwhy{\(F_s = \frac{9.1\cjunit{kilo-samples}}{4.7\cjunit{seconds}}\)}{\(F = \frac{S}{t}\)}
+				\cjneeded{\(F_s\)}{Sampling frequency.}
+				\cjsolsect{Given}
+				\cjgiven{\(S = 9.1\cjunit{kilo-samples}\)}{Amount of samples.}
+				\cjgiven{\(t = 4.7\cjunit{seconds}\)}{Amount of time.}
+
+				\cjwhy{\(F_s = \frac{9.1\cjunit{kilo-samples}}{4.7\cjunit{seconds}}\)}{\(F_s = \frac{S}{t}\)}
 				\cjfa{\(F_s = 1936.1\cjunit{Hz}\)}
 			\end{cjsolution}
 
@@ -23,26 +28,47 @@
 		of \(F_s = 44.1\text{ kHz}\) for each channel. If each sample is encoded with 16 bits, and
 		one byte is 8 bits, how many bytes are required to store 51.2 seconds of music?}
 			\begin{cjsolution}
-				\cjwhy{\(F = 44.1\text{ kHz} \cdot 2\cjunit{channels}\)}{Note that we need two channels.}
-				\cjcontinue{\(F = 88.2\cjunit{kHz}\)}
-				\cjwhy{\(S = 88.2\text{ kHz} \cdot 51.2\cjunit{seconds}\)}{\(S = Ft\)}
-				\cjcontinue{\(S = 4.51584\cjexp{6}\cjunit{samples}\)}
-				\cjwhy{\(b = 4.51584\cjexp{6}\cjunit{samples} \cdot 16\cjunit{bits/sample}\)}{\(b = S \cdot b_s\)}
-				\cjcontinue{\(b = 72.25344\cjexp{6}\cjunit{bits}\)}
-				\cjwhy{\(B = \frac{72.25344\cjexp{6}\cjunit{bits}}{8\cjunit{bits per byte}}\)}{\(B = \frac{b}{b_B}\)}
-				\cjfa{\(B = 9.03168\cjexp{6}\cjunit{bytes}\)}
+				\cjneeded{\(B_T\)}{Total amount of bytes needed.}
+				\cjsolsect{Given}
+				\cjgiven{\(c = 2\cjunit{channels}\)}{Amount of channels.}
+				\cjgiven{\(F_s = 44.1\cjunit{kHz/channel}\)}{Sampling frequency.}
+				\cjgiven{\(b_s = 16\cjunit{bits/sample}\)}{Amount of bits in a sample.}
+				\cjgiven{\(b_B = 8\cjunit{bits/byte}\)}{Amount of bits in a byte.}
+				\cjgiven{\(t = 51.2\cjunit{seconds}\)}{Amount of time.}
+				\cjsolsect{Let}
+				\cjgiven{\(F_T\)}{Total sampling frequency.}
+				\cjgiven{\(S_T\)}{Total amount of samples.}
+				\cjgiven{\(b_T\)}{Total amount of bits.}
+
+				\cjwhy{\(F_T = 44.1\cjunit{kHz/channel} \cdot 2\cjunit{channels}\)}{Note that we need two channels.}
+				\cjcontinue{\(F_T = 88.2\cjunit{kHz}\)}
+				\cjwhy{\(S_T = 88.2\text{ kHz} \cdot 51.2\cjunit{seconds}\)}{\(S_T = F_Tt\)}
+				\cjcontinue{\(S_T = 4.51584\cjexp{6}\cjunit{samples}\)}
+				\cjwhy{\(b_T = 4.51584\cjexp{6}\cjunit{samples} \cdot 16\cjunit{bits/sample}\)}{\(b_T = S_Tb_s\)}
+				\cjcontinue{\(b_T = 72.25344\cjexp{6}\cjunit{bits}\)}
+				\cjwhy{\(B_T = \frac{72.25344\cjexp{6}\cjunit{bits}}{8\cjunit{bits/byte}}\)}{\(B_T = \frac{b_T}{b_B}\)}
+				\cjfa{\(B_T = 9.03168\cjexp{6}\cjunit{bytes}\)}
 			\end{cjsolution}
 
 		\cjitem{Consider a system that uses 8-bit ASCII codes to encode letters. How long (in
 		microseconds) will it take to transmit the bit sequence encoding ``Hello-World!'' if we
 		use a bit time of 4 samples per bit, and transmit samples at a rate of 1 MHz?}
 			\begin{cjsolution}
-				\cjwhy{\(c = 12\cjunit{characters}\)}{There are 12 characters in the string ``Hello-World!''.}
-				\cjwhy{\(b = 12\cjunit{characters} \cdot 8\cjunit{bits/character}\)}{Get the total amount of bits in the string.}
+				\cjneeded{\(t\)}{Amount of time needed.}
+				\cjsolsect{Given}
+				\cjgiven{\(b_c = 8\cjunit{bits/character}\)}{Amount of bits per character.}
+				\cjgiven{\(c = 12\cjunit{characters}\)}{Amount of characters in the string.}
+				\cjgiven{\(b_t = 4\cjunit{samples/bit}\)}{Bit time.}
+				\cjgiven{\(F_{Tx} = 1\cjunit{MHz}\)}{Transmission frequency.}
+				\cjsolsect{Let}
+				\cjgiven{\(b_T\)}{Total amount of bits.}
+				\cjgiven{\(S_T\)}{Total amount of samples.}
+
+				\cjwhy{\(b_T = 12\cjunit{characters} \cdot 8\cjunit{bits/character}\)}{\(b_T = cb_c\)}
 				\cjcontinue{\(b = 96\cjunit{bits}\)}
-				\cjwhy{\(S = 96\cjunit{bits} \cdot 4\cjunit{samples/bit}\)}{\(S = b \cdot S_b\)}
-				\cjcontinue{\(S = 384\cjunit{samples}\)}
-				\cjwhy{\(t = \frac{384\cjunit{samples}}{1\cjunit{MHz}}\)}{\(t = \frac{S}{F}\)}
+				\cjwhy{\(S_T = 96\cjunit{bits} \cdot 4\cjunit{samples/bit}\)}{\(S_T = b_Tb_t\)}
+				\cjcontinue{\(S_T = 384\cjunit{samples}\)}
+				\cjwhy{\(t = \frac{384\cjunit{samples}}{1\cjunit{MHz}}\)}{\(t = \frac{S_T}{F_{Tx}}\)}
 				\cjfa{\(t = 384\cjunit{microseconds}\)}
 			\end{cjsolution}
 
@@ -62,13 +88,22 @@
 		where \(u(t)\) is the continuous-time unit step function. If the quantization level is
 		0.02, determine the minimum number of bits needed to represent the full range of the analog signal \(x(t)\).}
 			\begin{cjsolution}
-				\cjwhy{\(R = 3 - (-5)\)}{dynamic range \(=\) maximum value \(-\) minimum value}
+				\cjneeded{\(b_m\)}{Minimum amount of bits needed.}
+				\cjsolsect{Given}
+				\cjgiven{\(Q = 0.02\)}{Quantization step size.}
+				\cjgiven{\(M = 3\)}{Maximum value of the waveform.}
+				\cjgiven{\(m = -5\)}{Minimum value of the waveform.}
+				\cjsolsect{Let}
+				\cjgiven{\(R\)}{Dynamic range.}
+				\cjgiven{\(L\)}{Amount of quantization levels.}
+
+				\cjwhy{\(R = 3 - (-5)\)}{\(R = M - m\)}
 				\cjcontinue{\(R = 8\)}
-				\cjwhy{\(Q = \frac{8}{0.02}\)}{number of levels \(= \frac{\text{dynamic range}}{\text{resolution}}\)}
-				\cjcontinue{\(Q = 400\)}
-				\cjwhy{\(b = \lceil\text{log}_2 400\rceil\)}{number of bits = \(\lceil\text{log}_2 \text{ number of levels}\rceil\)}
-				\cjcontinue{\(b = \lceil8.64385618977\rceil\)}
-				\cjfa{\(b = 9\)}
+				\cjwhy{\(L = \frac{8}{0.02}\)}{\(L = \frac{R}{Q}\)}
+				\cjcontinue{\(L = 400\cjunit{levels}\)}
+				\cjwhy{\(b_m = \cjceil{\cjlog{2}{400\cjunit{levels}}}\)}{\(B_m = \cjceil{\cjlog{2}{L}}\)}
+				\cjcontinue{\(b_m = \lceil8.64385618977\rceil\)}
+				\cjfa{\(b_m = 9\cjunit{bits}\)}
 			\end{cjsolution}
 	\end{cjsection}
 \end{document}
