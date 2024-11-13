@@ -57,5 +57,18 @@
 				\cjcontinue{c: dynamic range}
 				\cjcontinue{d: coding}
 			\end{cjsolution}
+
+		\cjitem{An analog waveform is described as \[x(t) = 2u(t) - 5u(t - 1) + 3u(t - 2) + 3u(t - 3) - 2u(t - 4) - u(t - 5)\]
+		where \(u(t)\) is the continuous-time unit step function. If the quantization level is
+		0.02, determine the minimum number of bits needed to represent the full range of the analog signal \(x(t)\).}
+			\begin{cjsolution}
+				\cjwhy{\(R = 3 - (-5)\)}{dynamic range \(=\) maximum value \(-\) minimum value}
+				\cjcontinue{\(R = 8\)}
+				\cjwhy{\(Q = \frac{8}{0.02}\)}{number of levels \(= \frac{\text{dynamic range}}{\text{resolution}}\)}
+				\cjcontinue{\(Q = 400\)}
+				\cjwhy{\(b = \lceil\text{log}_2 400\rceil\)}{number of bits = \(\lceil\text{log}_2 \text{ number of levels}\rceil\)}
+				\cjcontinue{\(b = \lceil8.64385618977\rceil\)}
+				\cjfa{\(b = 9\)}
+			\end{cjsolution}
 	\end{cjsection}
 \end{document}
