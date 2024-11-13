@@ -9,4 +9,53 @@
 
 \begin{document}
 	\cjboilerplate{EEE 113}{Communications - Basics of Communication Systems}
+
+	\begin{cjsection}{}
+		\cjitem{Suppose we sample a signal at frequency \(F_s\). If we collect 9.1 kilo-samples in
+		4.7 seconds, what is \(F_s\) in Hz (samples/second)? Please provide your answer in at least
+		5 significant figures.}
+			\begin{cjsolution}
+				\cjwhy{\(F_s = \frac{9.1\cjunit{kilo-samples}}{4.7\cjunit{seconds}}\)}{\(F = \frac{S}{t}\)}
+				\cjfa{\(F_s = 1936.1\cjunit{Hz}\)}
+			\end{cjsolution}
+
+		\cjitem{Compact discs record two channels (left and right) of music at a sampling frequency
+		of \(F_s = 44.1\text{ kHz}\) for each channel. If each sample is encoded with 16 bits, and
+		one byte is 8 bits, how many bytes are required to store 51.2 seconds of music?}
+			\begin{cjsolution}
+				\cjwhy{\(F = 44.1\text{ kHz} \cdot 2\cjunit{channels}\)}{Note that we need two channels.}
+				\cjcontinue{\(F = 88.2\cjunit{kHz}\)}
+				\cjwhy{\(S = 88.2\text{ kHz} \cdot 51.2\cjunit{seconds}\)}{\(S = Ft\)}
+				\cjcontinue{\(S = 4.51584\cjexp{6}\cjunit{samples}\)}
+				\cjwhy{\(b = 4.51584\cjexp{6}\cjunit{samples} \cdot 16\cjunit{bits/sample}\)}{\(b = S \cdot b_s\)}
+				\cjcontinue{\(b = 72.25344\cjexp{6}\cjunit{bits}\)}
+				\cjwhy{\(B = \frac{72.25344\cjexp{6}\cjunit{bits}}{8\cjunit{bits per byte}}\)}{\(B = \frac{b}{b_B}\)}
+				\cjfa{\(B = 9.03168\cjexp{6}\cjunit{bytes}\)}
+			\end{cjsolution}
+
+		\cjitem{Consider a system that uses 8-bit ASCII codes to encode letters. How long (in
+		microseconds) will it take to transmit the bit sequence encoding ``Hello-World!'' if we
+		use a bit time of 4 samples per bit, and transmit samples at a rate of 1 MHz?}
+			\begin{cjsolution}
+				\cjwhy{\(c = 12\cjunit{characters}\)}{There are 12 characters in the string ``Hello-World!''.}
+				\cjwhy{\(b = 12\cjunit{characters} \cdot 8\cjunit{bits/character}\)}{Get the total amount of bits in the string.}
+				\cjcontinue{\(b = 96\cjunit{bits}\)}
+				\cjwhy{\(S = 96\cjunit{bits} \cdot 4\cjunit{samples/bit}\)}{\(S = b \cdot S_b\)}
+				\cjcontinue{\(S = 384\cjunit{samples}\)}
+				\cjwhy{\(t = \frac{384\cjunit{samples}}{1\cjunit{MHz}}\)}{\(t = \frac{S}{F}\)}
+				\cjfa{\(t = 384\cjunit{microseconds}\)}
+			\end{cjsolution}
+
+		\cjitem{The process of converting a discrete-time continuous-valued signal into a digital
+		signal by expressing each sample as a finite number of digits is called (a); (b) is the
+		difference between sampled analog signal and digitized signal; (c) refers to the difference
+		between the minimum and maximum value of the discrete-time signal; (d) is the assignment of
+		a unique binary number to each quantization level.}
+			\begin{cjsolution}
+				\cjfa{a: quantization}
+				\cjcontinue{b: quantization error}
+				\cjcontinue{c: dynamic range}
+				\cjcontinue{d: coding}
+			\end{cjsolution}
+	\end{cjsection}
 \end{document}
